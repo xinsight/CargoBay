@@ -1032,7 +1032,7 @@ restoreCompletedTransactionsFailedWithError:(NSError *)error
     static NSHashTable *_mutableRegisteredDelegates = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _mutableRegisteredDelegates = [NSHashTable weakObjectsHashTable];
+        _mutableRegisteredDelegates = [NSHashTable hashTableWithOptions:NSPointerFunctionsStrongMemory];
     });
 
     return _mutableRegisteredDelegates;
